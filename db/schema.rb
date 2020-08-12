@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 2020_08_11_173009) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "title"
     t.text "status"
   end
 
