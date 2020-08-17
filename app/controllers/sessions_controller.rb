@@ -15,6 +15,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session[:user_id] = nil
+    flash[:success] = 'ログアウトしました。'
+    redirect_to root_url
   end
 
   private
@@ -28,6 +31,11 @@ class SessionsController < ApplicationController
     else
       # ログイン失敗
       return false
+    end
+  end
+  def require_user_logged_in
+    unless logged_in?
+      redirect_to login_url
     end
   end
 end
