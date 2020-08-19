@@ -17,7 +17,7 @@ class TasksController < ApplicationController
 
   def new
     if logged_in?
-      @task = current_user.microposts.build  # form_with 用
+      @task = current_user.tasks.build  # form_with 用
     end  
   end
 
