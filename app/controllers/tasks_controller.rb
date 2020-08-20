@@ -1,14 +1,12 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :require_user_logged_in
-  before_action :correct_user, only: [:create, :show, :update, :destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
   
   def index
     @tasks = current_user.tasks.order(id: :desc)
   end
 
   def show
-    @tasks = current_user.tasks.order(id: :desc)
   end
 
   def new
@@ -28,7 +26,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = current_user.tasks.build  # form_with 用  
   end
 
   def update
@@ -49,11 +46,7 @@ class TasksController < ApplicationController
   end
 
   private
-  
-  def set_task
-    @task = Task.find(params[:id])
-  end
-
+ 
   #Strong Parameter
   def task_params
     params.require(:task).permit(:content, :status, :user)
